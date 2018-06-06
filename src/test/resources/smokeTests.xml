@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Smoke Suite" parallel="methods" thread-count="3" verbose="1" >
+
+    <test name="Smoke Test Scope" >
+
+        <classes>
+            <class name="hw2.ex2.SmokeTests"/>
+            <class name="hw2.ex2.MixedTests">
+                <methods>
+                    <include name="siteHasBasicElementsTest"/>
+                </methods>
+            </class>
+        </classes>
+
+    </test>
+
+</suite>

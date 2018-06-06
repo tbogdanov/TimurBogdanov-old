@@ -1,4 +1,4 @@
-package hw1;
+package hw2.ex3;
 
 import enums.Links;
 import enums.Strings;
@@ -9,39 +9,57 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+
+import static java.lang.System.setProperty;
 
 /**
- * Created by Timur Bogdanov on 28.05.18.
+ * Created by Timur Bogdanov on 05.06.18.
  */
-public class BasicElementsTest {
+public class AnnotatedTest {
 
-    private ChromeOptions options;
-    private HashMap<String, Object> chromePrefs;
+    private WebDriver driver;
+    private final String driverPath = "src/test/resources/chromedriver.exe";
+
+    @BeforeSuite
+    public void beforeSuite() {
+        setProperty("webdriver.chrome.driver", driverPath);
+    }
+
+    @BeforeClass
+    public void beforeClass() {
+        driver = new ChromeDriver();
+    }
 
     @BeforeMethod
     public void beforeMethod() {
+        driver.manage().window().maximize();
+    }
 
-        // Preparing chromePrefs for a driver
-        chromePrefs = new HashMap<>();
-        chromePrefs.put("download.default_directory", "target");
+    @AfterMethod
+    public void afterMethod() {
+        System.out.println(driver.getTitle());
+    }
 
-        options = new ChromeOptions();
-        options.setExperimentalOption("prefs", chromePrefs);
+    @AfterClass
+    public void afterClass() {
+        driver.close();
+    }
 
+    @AfterSuite
+    public void afterSuite() {
+        System.out.println(System.currentTimeMillis());
     }
 
     @Test
     public void siteHasBasicElementsTest() {
 
         // S1: Open test site by URL
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
         driver.navigate().to(Links.HOME_PAGE.getUrl());
 
         // S2: Assert Browser title
@@ -128,6 +146,5 @@ public class BasicElementsTest {
         // Close the driver
         driver.close();
     }
-
 
 }

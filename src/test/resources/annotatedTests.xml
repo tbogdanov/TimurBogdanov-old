@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Annotated Suite" parallel="methods" thread-count="3" verbose="1" >
+
+    <test name="Annotation Test Scope" >
+
+        <classes>
+            <class name="hw2.ex3.AnnotatedTest"/>
+        </classes>
+
+    </test>
+
+</suite>
