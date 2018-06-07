@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Annotated Suite" parallel="methods" thread-count="3" verbose="1" >
+<suite name="Annotated Suite" verbose="1" >
 
     <test name="Annotation Test Scope" >
 

@@ -9,7 +9,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
@@ -28,8 +27,9 @@ public class SmokeTests {
     private HashMap<String, Object> chromePrefs;
     private final String driverPath = "src/test/resources/chromedriver.exe";
 
-    @BeforeMethod
-    public void beforeClass() {
+    @Test(groups = {"Smoke"})
+    public void siteHasBasicElementsTest() {
+
         setProperty("webdriver.chrome.driver", driverPath);
 
         // Preparing chromePrefs for a driver
@@ -39,11 +39,6 @@ public class SmokeTests {
         options = new ChromeOptions();
         options.setExperimentalOption("prefs", chromePrefs);
 
-    }
-
-    @Test
-    public void siteHasBasicElementsTest() {
-
         // S1: Open test site by URL
         WebDriver driver = new ChromeDriver(options);
         driver.manage().window().maximize();
@@ -134,9 +129,18 @@ public class SmokeTests {
         driver.close();
     }
 
-    @Test
+    @Test(groups = {"Smoke"})
     public void siteHasBasicElementsTest1() {
 
+        setProperty("webdriver.chrome.driver", driverPath);
+
+        // Preparing chromePrefs for a driver
+        chromePrefs = new HashMap<>();
+        chromePrefs.put("download.default_directory", "target");
+
+        options = new ChromeOptions();
+        options.setExperimentalOption("prefs", chromePrefs);
+
         // S1: Open test site by URL
         WebDriver driver = new ChromeDriver(options);
         driver.manage().window().maximize();
@@ -227,8 +231,16 @@ public class SmokeTests {
         driver.close();
     }
 
-    @Test
+    @Test(groups = {"Smoke"})
     public void siteHasBasicElementsTest2() {
+
+        setProperty("webdriver.chrome.driver", driverPath);
+
+        // Preparing chromePrefs for a driver
+        chromePrefs = new HashMap<>();
+        chromePrefs.put("download.default_directory", "target");
+
+        options = new ChromeOptions();
 
         // S1: Open test site by URL
         WebDriver driver = new ChromeDriver(options);

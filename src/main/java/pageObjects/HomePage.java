@@ -60,12 +60,10 @@ public class HomePage {
     private WebElement footer;
 
     public void openHomePage(WebDriver driver) {
-        // Open test site by URL
         driver.navigate().to(Links.HOME_PAGE.getUrl());
     }
 
     public void login(String login, String password) {
-        // Perform login
         userIcon.click();
         loginInput.sendKeys(login);
         passwordInput.sendKeys(password);
@@ -73,7 +71,6 @@ public class HomePage {
     }
 
     public void checkHomePageTitle(WebDriver driver) {
-        // Assert Browser title
         assertEquals(driver.getTitle(), Strings.TITLE.getText());
     }
 
@@ -82,8 +79,7 @@ public class HomePage {
         Assert.assertTrue(userName.isDisplayed());
     }
 
-    public void checkAllHeaderMenuItems() {
-        // Assert that there are 4 items on the header section are displayed and they have proper texts
+    public void checkHeaderMenuItems() {
         List<String> headerItemStrings = new LinkedList<>();
 
         for (WebElement item : headerMenuItems) {
@@ -102,19 +98,7 @@ public class HomePage {
         }
     }
 
-    public void checkHeaderMenuItem(WebDriver driver, int id, String expected) {
-        /* Check a specific item (for parameterized testing)
-           You can't really use @FindBy here because you don't have the specific id
-           when using PageFactory.initElements() in the beforeClass method. */
-        WebElement headerMenuItem = driver.findElement(
-                By.xpath("//ul[@class='uui-navigation nav navbar-nav m-l8']/li[" + id + "]"));
-
-        Assert.assertEquals(headerMenuItem.getText(), expected);
-        Assert.assertTrue(headerMenuItem.isDisplayed());
-    }
-
-    public void checkAllBenefitTexts() {
-        // Assert that there are 4 texts on the Index Page under icons and they have proper text
+    public void checkBenefitTexts() {
         List<String> benefitTextStrings = new LinkedList<>();
 
         for (WebElement item : benefitTexts) {
@@ -127,17 +111,7 @@ public class HomePage {
                 Arrays.asList(Strings.BENEFITS.getText().split("; ")));
     }
 
-    public void checkBenefitText(WebDriver driver, int id, String expected) {
-        /* Check a specific item (for parameterized testing)
-           You can't really use @FindBy here because you don't have the specific id
-           when using PageFactory.initElements() in the beforeClass method. */
-        WebElement benefitItem = driver.findElement(
-                By.xpath("//div[@class='col-sm-3'][" + id + "]/div/span[@class='benefit-txt']"));
-        Assert.assertEquals(benefitItem.getText(), expected);
-    }
-
     public void checkMainHeaderTitle() {
-        // Assert a text of the main header
         Assert.assertTrue(mainHeaderTitle.isDisplayed());
         Assert.assertEquals(mainHeaderTitle.getText(), Strings.MAIN_HEADER_TITLE.getText());
     }
@@ -148,13 +122,11 @@ public class HomePage {
     }
 
     public void checkSubHeader() {
-        // Assert a text of the sub header
         Assert.assertTrue(subHeader.isDisplayed());
         Assert.assertEquals(subHeader.getText(), Strings.SUB_HEADER_TITLE.getText());
     }
 
     public void checkSubHeaderLink() {
-        // Assert it has a proper URL
         Assert.assertEquals(subHeader.getAttribute("href"), Links.JDI_PAGE.getUrl());
     }
 

@@ -143,8 +143,6 @@ public class AnnotatedTest {
         // S13: Assert that there is Footer
         Assert.assertTrue(driver.findElement(By.cssSelector(".footer-content.overflow")).isDisplayed());
 
-        // Close the driver
-        driver.close();
     }
 
 }

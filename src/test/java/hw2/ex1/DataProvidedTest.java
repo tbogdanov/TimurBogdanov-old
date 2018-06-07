@@ -1,9 +1,7 @@
 package hw2.ex1;
 
 import enums.Links;
-import enums.Strings;
 import org.openqa.selenium.WebElement;
-import utils.TestUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -30,7 +28,12 @@ public class DataProvidedTest {
 
     @DataProvider
     public Object[][] benefitDataProvider() {
-        return TestUtils.extractTestParamsFromString(Strings.BENEFITS.getText(), "; ");
+        return new Object[][] {
+                {1, "To include good practices\nand ideas from successful\nEPAM project"},
+                {2, "To be flexible and\ncustomizable"},
+                {3, "To be multiplatform"},
+                {4, "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more\u2026"}
+        };
     }
 
     @BeforeMethod

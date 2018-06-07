@@ -1,10 +1,8 @@
 package hw3;
 
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.DataProvider;
 import pageObjects.HomePage;
 
-import enums.Strings;
 import enums.Users;
 
 import org.openqa.selenium.WebDriver;
@@ -13,7 +11,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import utils.TestUtils;
 
 import java.util.HashMap;
 
@@ -29,16 +26,6 @@ public class BasicElementsTest {
     private ChromeOptions options;
     private WebDriver driver;
     private HomePage homePage;
-
-    @DataProvider
-    public Object[][] headerMenuDataProvider() {
-        return TestUtils.extractTestParamsFromString(Strings.HEADER_NAVBAR.getText(), "; ");
-    }
-
-    @DataProvider
-    public Object[][] benefitDataProvider() {
-        return TestUtils.extractTestParamsFromString(Strings.BENEFITS.getText(), "; ");
-    }
 
     @BeforeClass
     public void beforeClass() {
@@ -57,7 +44,6 @@ public class BasicElementsTest {
 
     @AfterClass
     public void afterClass() {
-        // Close the driver
         driver.close();
     }
 
@@ -80,13 +66,13 @@ public class BasicElementsTest {
         homePage.checkHomePageTitle(driver);
 
         // S6: Assert that there are 4 items on the header section are displayed and they have proper texts
-        //homePage.checkAllHeaderMenuItems(); - there is a parameterized form
+        homePage.checkHeaderMenuItems();
 
         // S7: Assert that there are 4 images on the Index Page and they are displayed
         homePage.checkBenefitIcons();
 
         // S8: Assert that there are 4 texts on the Index Page under icons and they have proper text
-        //homePage.checkAllBenefitTexts(); - there is a parameterized form
+        homePage.checkBenefitTexts();
 
         // S9: Assert a text of the main header
         homePage.checkMainHeaderTitle();
@@ -106,18 +92,5 @@ public class BasicElementsTest {
 
 
     }
-
-    @Test(dataProvider = "headerMenuDataProvider", threadPoolSize = 4)
-    public void siteHasProperHeaderMenuItemTest(int id, String expected) {
-        // S6 in the parametrized form
-        homePage.checkHeaderMenuItem(driver, id, expected);
-    }
-
-    @Test(dataProvider = "benefitDataProvider", threadPoolSize = 4)
-    public void siteHasProperBenefitStringTest(int id, String expected) {
-        // S8 in the parametrized form
-        homePage.checkBenefitText(driver, id, expected);
-    }
-
 
 }
