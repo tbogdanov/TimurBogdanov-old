@@ -5,7 +5,7 @@ package enums;
  */
 public enum Strings {
 
-    TITLE("Home Page"),
+    HOME_PAGE_TITLE("Home Page"),
     HEADER_NAVBAR("HOME; CONTACT FORM; SERVICE; METALS & COLORS"),
     BENEFITS("To include good practices\nand ideas from successful\nEPAM project; " +
             "To be flexible and\ncustomizable; " +
@@ -18,7 +18,20 @@ public enum Strings {
                              "UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS "+
                              "NISI UT ALIQUIP EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT "+
                              "IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR."),
-    SUB_HEADER_TITLE("JDI GITHUB");
+    SUB_HEADER_TITLE("JDI GITHUB"),
+
+    SERVICE_MENU("Support; Dates; Complex Table; Simple Table; User Table; "+
+            "Table with Pages; Different Elements; Performance"),
+
+    LEFT_SERVICE_DIFF_ELEMENTS_TEXT("Different Elements"),
+
+    DIFFERENT_ELEMENTS_TITLE("Different Elements"),
+
+    CB_WATER("Water"), CB_EARTH("Earth"), CB_WIND("Wind"), CB_FIRE("Fire"),
+    RB_GOLD("Gold"), RB_SILVER("Silver"), RB_BRONZE("Bronze"), RB_SELEN("Selen"),
+    DD_RED("RED"), DD_GREEN("Green"), DD_BLUE("Blue"), DD_YELLOW("Yellow"),
+    TRUE("true"), FALSE("false");
+
 
     private String elem;
 
@@ -26,7 +39,8 @@ public enum Strings {
         this.elem = elem;
     }
 
-    public String getText() {
+    @Override
+    public String toString() {
         return elem;
     }
 

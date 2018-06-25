@@ -55,7 +55,7 @@ public class DataProvidedTest {
         // Open test site by URL
         WebDriver driver = new ChromeDriver(options);
         driver.manage().window().maximize();
-        driver.navigate().to(Links.HOME_PAGE.getUrl());
+        driver.navigate().to(Links.HOME_PAGE.toString());
 
         // Assert that there is a specific benefit test under the specific icon
         WebElement benefitItem = driver.findElement(By.xpath("//div[@class='col-sm-3'][" + id + "]/div/span[@class='benefit-txt']"));

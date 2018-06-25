@@ -7,12 +7,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -60,10 +58,10 @@ public class AnnotatedTest {
     public void siteHasBasicElementsTest() {
 
         // S1: Open test site by URL
-        driver.navigate().to(Links.HOME_PAGE.getUrl());
+        driver.navigate().to(Links.HOME_PAGE.toString());
 
         // S2: Assert Browser title
-        Assert.assertEquals(driver.getTitle(), Strings.TITLE.getText());
+        Assert.assertEquals(driver.getTitle(), Strings.HOME_PAGE_TITLE.toString());
 
         // S3: Perform login
         WebElement userIcon = driver.findElement(By.cssSelector(".profile-photo"));
@@ -79,7 +77,7 @@ public class AnnotatedTest {
         Assert.assertEquals(userName.getText(), Users.PITER_CHAILOVSKII.getName());
 
         // S5: Assert Browser title
-        Assert.assertEquals(driver.getTitle(), Strings.TITLE.getText());
+        Assert.assertEquals(driver.getTitle(), Strings.HOME_PAGE_TITLE.toString());
 
         // S6: Assert that there are 4 items on the header section are displayed and they have proper texts
         List<WebElement> headerItems = driver.findElements(By.cssSelector(".uui-navigation.nav.navbar-nav.m-l8>li"));
@@ -97,7 +95,7 @@ public class AnnotatedTest {
            It's more useful than AssertTrue(headerItemStrings.containsAll(...))
            We demand the equality of order as well because the items shouldn't be misplaced. */
         Assert.assertEquals(headerItemStrings,
-                Arrays.asList(Strings.HEADER_NAVBAR.getText().split("; ")));
+                Arrays.asList(Strings.HEADER_NAVBAR.toString().split("; ")));
 
         // S7: Assert that there are 4 images on the Index Page and they are displayed
         List<WebElement> benefitIcons = driver.findElements(By.cssSelector(".icons-benefit"));
@@ -117,25 +115,25 @@ public class AnnotatedTest {
 
         Assert.assertEquals(benefitTextBlocks.size(), 4);
         Assert.assertEquals(benefitTextStrings,
-                Arrays.asList(Strings.BENEFITS.getText().split("; ")));
+                Arrays.asList(Strings.BENEFITS.toString().split("; ")));
 
         // S9: Assert a text of the main header
         WebElement mainHeader = driver.findElement(By.cssSelector(".main-title.text-center"));
         Assert.assertTrue(mainHeader.isDisplayed());
-        Assert.assertEquals(mainHeader.getText(), Strings.MAIN_HEADER_TITLE.getText());
+        Assert.assertEquals(mainHeader.getText(), Strings.MAIN_HEADER_TITLE.toString());
 
         WebElement mainHeaderText = driver.findElement(By.cssSelector(".main-txt.text-center"));
         Assert.assertTrue(mainHeaderText.isDisplayed());
-        Assert.assertEquals(mainHeaderText.getText(), Strings.MAIN_HEADER_TEXT.getText());
+        Assert.assertEquals(mainHeaderText.getText(), Strings.MAIN_HEADER_TEXT.toString());
 
         // S10: Assert a text of the sub header
         WebElement subHeader = driver.findElement(By.cssSelector(".main-content"))
                 .findElement(By.tagName("a"));
         Assert.assertTrue(subHeader.isDisplayed());
-        Assert.assertEquals(subHeader.getText(), Strings.SUB_HEADER_TITLE.getText());
+        Assert.assertEquals(subHeader.getText(), Strings.SUB_HEADER_TITLE.toString());
 
         // S11: Assert it has a proper URL
-        Assert.assertEquals(subHeader.getAttribute("href"), Links.JDI_PAGE.getUrl());
+        Assert.assertEquals(subHeader.getAttribute("href"), Links.JDI_PAGE.toString());
 
         // S12: Assert that there is Left Section
         Assert.assertTrue(driver.findElement(By.cssSelector(".sidebar-menu")).isDisplayed());

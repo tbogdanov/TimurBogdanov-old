@@ -2,7 +2,6 @@ package pageObjects;
 
 import enums.Links;
 import enums.Strings;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -60,7 +59,7 @@ public class HomePage {
     private WebElement footer;
 
     public void openHomePage(WebDriver driver) {
-        driver.navigate().to(Links.HOME_PAGE.getUrl());
+        driver.navigate().to(Links.HOME_PAGE.toString());
     }
 
     public void login(String login, String password) {
@@ -71,7 +70,7 @@ public class HomePage {
     }
 
     public void checkHomePageTitle(WebDriver driver) {
-        assertEquals(driver.getTitle(), Strings.TITLE.getText());
+        assertEquals(driver.getTitle(), Strings.HOME_PAGE_TITLE.toString());
     }
 
     public void checkUsername(String expected) {
@@ -89,7 +88,7 @@ public class HomePage {
 
         Assert.assertEquals(headerItemStrings.size(), 4);
         Assert.assertEquals(headerItemStrings,
-                Arrays.asList(Strings.HEADER_NAVBAR.getText().split("; ")));
+                Arrays.asList(Strings.HEADER_NAVBAR.toString().split("; ")));
     }
 
     public void checkBenefitIcons() {
@@ -108,26 +107,26 @@ public class HomePage {
 
         Assert.assertEquals(benefitTexts.size(), 4);
         Assert.assertEquals(benefitTextStrings,
-                Arrays.asList(Strings.BENEFITS.getText().split("; ")));
+                Arrays.asList(Strings.BENEFITS.toString().split("; ")));
     }
 
     public void checkMainHeaderTitle() {
         Assert.assertTrue(mainHeaderTitle.isDisplayed());
-        Assert.assertEquals(mainHeaderTitle.getText(), Strings.MAIN_HEADER_TITLE.getText());
+        Assert.assertEquals(mainHeaderTitle.getText(), Strings.MAIN_HEADER_TITLE.toString());
     }
 
     public void checkMainHeaderText() {
         Assert.assertTrue(mainHeaderText.isDisplayed());
-        Assert.assertEquals(mainHeaderText.getText(), Strings.MAIN_HEADER_TEXT.getText());
+        Assert.assertEquals(mainHeaderText.getText(), Strings.MAIN_HEADER_TEXT.toString());
     }
 
     public void checkSubHeader() {
         Assert.assertTrue(subHeader.isDisplayed());
-        Assert.assertEquals(subHeader.getText(), Strings.SUB_HEADER_TITLE.getText());
+        Assert.assertEquals(subHeader.getText(), Strings.SUB_HEADER_TITLE.toString());
     }
 
     public void checkSubHeaderLink() {
-        Assert.assertEquals(subHeader.getAttribute("href"), Links.JDI_PAGE.getUrl());
+        Assert.assertEquals(subHeader.getAttribute("href"), Links.JDI_PAGE.toString());
     }
 
     public void checkLeftSection() {
