@@ -78,7 +78,7 @@ public class DifferentElementsPage {
         }
     }
     public void checkRadioLogEntry(String value) {
-        String expectedEntry = String.format("metal : value changed to %s", value);
+        String expectedEntry = String.format("metal: value changed to %s", value);
         $$(".logs li").get(0).shouldHave(text(expectedEntry));
     }
 

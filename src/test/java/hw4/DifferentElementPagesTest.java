@@ -40,7 +40,7 @@ public class DifferentElementPagesTest extends TestBase {
         homePage.openPage();
 
         //S2: Assert browser title
-        //homePage.checkTitle();
+        homePage.checkTitle();
 
         //S3: Perform login
         homePage.login(PITER_CHAILOVSKII.getLogin(), PITER_CHAILOVSKII.getPassword());

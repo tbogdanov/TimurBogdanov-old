@@ -14,6 +14,8 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static org.testng.Assert.assertEquals;
 
 
 /**
@@ -103,7 +105,7 @@ public class SelenideHomePage {
     }
 
     public void checkTitle() {
-        title.shouldHave(text(Strings.HOME_PAGE_TITLE.toString()));
+        Assert.assertEquals(getWebDriver().getTitle(), "Home Page");
     }
 
     public void checkBenefitElements() {

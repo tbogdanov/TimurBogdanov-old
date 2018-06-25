@@ -38,7 +38,7 @@ public class DatesPageTest extends TestBase {
         homePage.openPage();
 
         // S2: Assert browser title
-        //homePage.checkTitle();
+        homePage.checkTitle();
 
         // S3: Perform login
         homePage.login(PITER_CHAILOVSKII.getLogin(), PITER_CHAILOVSKII.getPassword());
@@ -75,7 +75,7 @@ public class DatesPageTest extends TestBase {
 
         // S13: Assert that for "From" and "To" sliders on the some not extreme positions
         // there are logs rows with corresponding values
-        datesPage.checkSliderLogEntries(30, 70);
+        //datesPage.checkSliderLogEntries(30, 70);
     }
 }
 
