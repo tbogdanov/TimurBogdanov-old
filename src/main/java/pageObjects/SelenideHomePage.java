@@ -1,6 +1,7 @@
 package pageObjects;
 
 import enums.Strings;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
@@ -87,11 +88,12 @@ public class SelenideHomePage {
     @FindBy(css = ".nav a[href = 'dates.html']")
     private SelenideElement dates;
 
-
+    @Step("Open the Home Page")
     public void openPage() {
         open(pageUrl);
     }
 
+    @Step("Log into the Home Page")
     public void login(String login, String password) {
         userIcon.click();
         loginInput.sendKeys(login);
@@ -99,15 +101,18 @@ public class SelenideHomePage {
         submitButton.click();
     }
 
+    @Step("Check the user name on the top-right")
     public void checkUserName(String expectedName) {
         userName.shouldBe(visible);
         userName.shouldHave(text(expectedName));
     }
 
+    @Step("Check the browser tab title for the page")
     public void checkTitle() {
         Assert.assertEquals(getWebDriver().getTitle(), "Home Page");
     }
 
+    @Step("Check Benefit elements")
     public void checkBenefitElements() {
 
         benefitIcons.shouldHaveSize(4);
@@ -122,6 +127,7 @@ public class SelenideHomePage {
         benefitTexts.shouldHave(texts(Arrays.asList(Strings.BENEFITS.toString().split("; "))));
     }
 
+    @Step("Check the texts on the header")
     public void checkHeaderTexts() {
         mainHeaderText.shouldBe(visible);
         mainHeaderText.shouldHave(text(Strings.MAIN_HEADER_TEXT.toString()));
@@ -130,6 +136,7 @@ public class SelenideHomePage {
         subHeader.shouldHave(text(Strings.SUB_HEADER_TITLE.toString()));
     }
 
+    @Step("Check the items on the left Service submenu")
     public void checkLeftServiceMenu() {
         leftServiceDropdown.click();
 
@@ -141,6 +148,7 @@ public class SelenideHomePage {
         }
     }
 
+    @Step("Check the items on the header Service submenu")
     public void checkHeaderServiceMenu() {
         headerServiceDropdown.click();
 
@@ -152,16 +160,19 @@ public class SelenideHomePage {
         }
     }
 
+    @Step("Go to the Different Elements page")
     public void openDifferentElementsPage() {
         headerServiceDropdown.click();
         difElements.click();
     }
 
+    @Step("Go to the Dates page")
     public void openDatesPage() {
         headerServiceDropdown.click();
         dates.click();
     }
 
+    @Step("Check the visibility of the Left section")
     public void checkLeftSection() {
         Assert.assertTrue(sidebarMenu.isDisplayed());
     }

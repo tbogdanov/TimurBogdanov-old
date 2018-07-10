@@ -9,6 +9,8 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
 
+import io.qameta.allure.Step;
+
 /**
  * Created by Timur Bogdanov on 18.06.18.
  */
@@ -41,14 +43,17 @@ public class DifferentElementsPage {
     @FindBy(css = ".logs li")
     private ElementsCollection logEntries;
 
+    @Step("Open the Different Elements page")
     public void openDifferentElements() {
         open(pageUrl);
     }
 
+    @Step("Check the browser tab title for the page")
     public void checkTitle() {
         title.shouldHave(text(Strings.DIFFERENT_ELEMENTS_TITLE.toString()));
     }
 
+    @Step("Check if all checkboxes, radios, buttons and dropdowns are present")
     public void checkInternalElements() {
         checkboxes.shouldHaveSize(4);
         radios.shouldHaveSize(4);
@@ -56,14 +61,17 @@ public class DifferentElementsPage {
         dropdown.shouldBe(visible);
     }
 
+    @Step("Check the visibility of the left section")
     public void checkLeftSection() {
         leftSection.shouldBe(visible);
     }
 
+    @Step("Check the visibility of the right section")
     public void checkRightSection() {
         rightSection.shouldBe(visible);
     }
 
+    @Step("Check log entries after checking Checkboxes")
     public void checkCheckboxLogEntries(String status, String[] elements) {
         /* We should check log entries in the reverse order.
            $$(...) was used instead of dedicated ElementsCollection because
@@ -77,26 +85,32 @@ public class DifferentElementsPage {
             logIndex--;
         }
     }
+
+    @Step("Check log entries after selecting Radio buttons")
     public void checkRadioLogEntry(String value) {
         String expectedEntry = String.format("metal: value changed to %s", value);
         $$(".logs li").get(0).shouldHave(text(expectedEntry));
     }
 
+    @Step("Check log entries after selecting from Dropdown")
     public void checkDropdownLogEntry(String value) {
         String expectedEntry = String.format("Colors: value changed to %s", value);
         $$(".logs li").get(0).shouldHave(text(expectedEntry));
     }
 
+    @Step("Check a checkbox")
     public void toggleCheckboxes(String[] checkboxNames) {
         for (String name : checkboxNames) {
             checkboxes.findBy(text(name)).$("[type = checkbox]").click();
         }
     }
 
+    @Step("Select a Radio button from the list")
     public void selectRadioButton(String radioName) {
         radios.findBy(text(radioName)).$("[type = radio]").click();
     }
 
+    @Step("Select an entry from Dropdown")
     public void selectDropdownOption(String name) {
         dropdown.click();
         dropdown.selectOption(name);

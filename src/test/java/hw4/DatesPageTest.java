@@ -3,6 +3,7 @@ package hw4;
 import base.TestBase;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.page;
@@ -13,6 +14,13 @@ import pageObjects.SelenideHomePage;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
+import listeners.AllureAttachmentListener;
+
+@Story("Check UI elements on HomePage and Dates Page")
+@Listeners({AllureAttachmentListener.class})
+@Feature("Home page menus; Dates page sliders")
 public class DatesPageTest extends TestBase {
 
 

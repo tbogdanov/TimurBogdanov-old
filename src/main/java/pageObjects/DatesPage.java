@@ -8,6 +8,8 @@ import org.testng.Assert;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$$;
 
+import io.qameta.allure.Step;
+
 /**
  * Created by Timur Bogdanov on 18.06.18.
  */
@@ -35,6 +37,7 @@ public class DatesPage {
     @FindBy(css = ".ui-slider-handle:nth-of-type(2) > span")
     private SelenideElement sliderRightLabel;
 
+    @Step("Set new Range slider values using drag-n-drop")
     public void setSlider(int newPositionLeft, int newPositionRight) {
 
         int positionLeft = Integer.parseInt(sliderLeftLabel.getText());
@@ -73,8 +76,6 @@ public class DatesPage {
             Selenide.actions().dragAndDropBy(sliderLeftHandle, leftXOffset, 0).build().perform();
         }
 
-
-
     }
 
     private int getXOffset(int fromPosition, int newPosition) {
@@ -87,6 +88,7 @@ public class DatesPage {
         return (int) (positionShift * step);
     }
 
+    @Step("Check log entries after moving Sliders")
     public void checkSliderLogEntries(int positionLeft, int positionRight) {
 
         /* We should check log entries in the reverse order.

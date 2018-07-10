@@ -1,8 +1,12 @@
 package hw5;
 
 import base.TestBase;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
+import listeners.AllureAttachmentListener;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pageObjects.DatesPage;
 import pageObjects.SelenideHomePage;
@@ -11,6 +15,9 @@ import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static enums.Users.PITER_CHAILOVSKII;
 
+@Story("Check UI elements on HomePage and Dates Page (modified)")
+@Listeners({AllureAttachmentListener.class})
+@Feature("Home page menus; Dates page sliders (modified)")
 public class ModifiedDatesPageTest extends TestBase {
 
 

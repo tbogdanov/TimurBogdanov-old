@@ -4,6 +4,7 @@ package hw4;
 import base.TestBase;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pageObjects.DifferentElementsPage;
 import pageObjects.SelenideHomePage;
@@ -13,10 +14,17 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static enums.Users.PITER_CHAILOVSKII;
 import static enums.Strings.*;
 
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
+import listeners.AllureAttachmentListener;
+
 /**
  * Created by Timur Bogdanov on 23.06.18.
  */
 
+@Story("Check UI elements on Home Page and Different Elements Page")
+@Listeners({AllureAttachmentListener.class})
+@Feature("Home page menus; Different elements page checkboxes, radios, and dropdowns")
 public class DifferentElementPagesTest extends TestBase {
 
     private SelenideHomePage homePage;
