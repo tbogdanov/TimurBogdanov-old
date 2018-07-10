@@ -14,6 +14,7 @@
         <smokeSuiteXmlFile>smokeTests.xml</smokeSuiteXmlFile>
         <regressionSuiteXmlFile>regressionTests.xml</regressionSuiteXmlFile>
         <annotatedSuiteXmlFile>annotatedTests.xml</annotatedSuiteXmlFile>
+        <genericTestNgSuiteXmlFile>testNg.xml</genericTestNgSuiteXmlFile>
     </properties>
 
 
@@ -38,9 +39,10 @@
                 <version>2.21.0</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/${smokeSuiteXmlFile}</suiteXmlFile>
+                        <!--suiteXmlFile>src/test/resources/${smokeSuiteXmlFile}</suiteXmlFile>
                         <suiteXmlFile>src/test/resources/${regressionSuiteXmlFile}</suiteXmlFile>
-                        <suiteXmlFile>src/test/resources/${annotatedSuiteXmlFile}</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/${annotatedSuiteXmlFile}</suiteXmlFile-->
+                        <suiteXmlFile>src/test/resources/${genericTestNgSuiteXmlFile}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>

@@ -1,0 +1,22 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="HW4 Dates Different Elements Page Tests" parallel="methods" thread-count="3" verbose="1" >
+
+    <test name="Dates Test" >
+
+        <classes>
+            <class name="hw4.DatesPageTest"/>
+            <class name="hw5.ModifiedDatesPageTest"/>
+        </classes>
+
+    </test>
+
+    <test name="Different Elements Test" >
+
+        <classes>
+            <class name="hw4.DifferentElementPagesTest"/>
+        </classes>
+
+    </test>
+
+</suite>
